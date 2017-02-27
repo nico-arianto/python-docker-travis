@@ -1,8 +1,15 @@
-FROM python:2.7-onbuild
+FROM python:2.7
 
 LABEL maintainer "nico.arianto@gmail.com"
 
-RUN rm -rf ./testspytes
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN mkdir -p website
+COPY ./website/ ./website/
 
 EXPOSE 8080
 
