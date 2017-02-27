@@ -1,0 +1,15 @@
+sudo: required
+language: python
+services:
+    - docker
+install: pip install -r requirements-test.txt
+script: python -m pytest --cov=website/ tests/
+before_deploy:
+    - docker build -t nico0arianto/python-travis:$TRAVIS_TAG .
+deploy:
+    provider: script
+    script: scripts/deploy.sh
+    on:
+        tags: true
+notifications:
+    slack: $SLACK_ACCOUNT:$SLACK_TOKEN
