@@ -11,5 +11,3 @@ deploy:
     script: scripts/deploy.sh
     on:
         tags: true
-notifications:
-    slack: $SLACK
