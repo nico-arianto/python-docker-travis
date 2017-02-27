@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from polls.views import index
+from website.polls.views import index
 
 
 def test_index(mocker):
